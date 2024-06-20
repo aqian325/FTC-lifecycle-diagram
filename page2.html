@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footwear Collective Lifecycle</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+    <h1>Footwear Lifecycle Diagram</h1>
+    <h2>The footwear collective produced 550 million pairs of shoes. What does this look like?<br><br>
+        <button onclick="animateSlider()" style="padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 20px;">click to produce shoes</button>
+    </h2>
+
+    <!-- Toggle Bar -->
+    <div style="text-align:left; margin-left:50px; margin-top:20px;">
+        <label for="growthSlider">one pair of shoes</label>
+        <input type="range" id="growthSlider" min="0" max="6" value="0" step="0.01" style="width: 300px; margin: 0 10px;">
+        <label id="sliderText">1 pair of shoes</label>
+        <br><br>
+    </div>
+
+    <main></main>
+
+    <!-- ONLINE LINKS -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1/lib/addons/p5.sound.min.js"></script>
+    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="https://p5play.org/v3/p5play.js"></script>
+
+    <!-- YOUR SKETCH -->
+    <script src="sketch1b.js"></script>
+
+    <div class="aligned-container">
+        <p>Data from Cheah et al., 2012 <br> carmenhull.com | @XYZDataLabs</p>
+
+        <!-- Next Button -->
+        <div style="text-align:center; margin-top:0px;">
+            <button onclick="location.href='page3.html'" style="padding: 10px 20px; font-size: 16px;">next</button>
+        </div>
+    </div>
+
+    <script>
+        function updateSliderText() {
+            const slider = document.getElementById('growthSlider');
+            const sliderText = document.getElementById('sliderText');
+            const value = slider.value;
+            const logValue = Math.pow(10, value);
+
+            if (value == slider.max) {
+                sliderText.innerText = "550,000,000 pairs of shoes. The area of each circle is mapped to a logarithmic scale.";
+            } else {
+                sliderText.innerText = `${logValue.toFixed(2)} pair${logValue > 1 ? 's' : ''} of shoes`;
+            }
+        }
+
+        function animateSlider() {
+            const slider = document.getElementById('growthSlider');
+            const startTime = performance.now();
+            const duration = 10000; // 10 seconds
+            const startValue = parseFloat(slider.value);
+            const endValue = parseFloat(slider.max);
+
+            function animate(time) {
+                const elapsed = time - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                slider.value = startValue + progress * (endValue - startValue);
+                updateSliderText();
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const slider = document.getElementById('growthSlider');
+            slider.addEventListener('input', updateSliderText);
+            updateSliderText();
+        });
+    </script>
+
+</body>
+
+</html>

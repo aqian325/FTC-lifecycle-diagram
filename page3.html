@@ -11,12 +11,17 @@
 
 <body>
     <h1>Footwear Lifecycle Diagram</h1>
-    <h2>Envisioning a more circular sneaker industry. </h2>
-    <!-- <p>*granularity good, shoe parts around shoe breakdown to material, materials subcategories around material reuse<br>border for main circle</p> -->
-    <div class="container">
-        <p>Each pair of shoes weighs approximately 1-2 kg. The areas of the circles are proportional to the mass of materials involved in each step of the lifecycle. <br>The size of the circles representing the breakdown of materials and shoe components reflects their percentage of the total mass of each pair of shoes.</p>
-
+    <h2>Different shoe models carry different impact. </h2>
+    <!-- <p>*get rid of laces <br> *log scale for circle growth, add in note about size -- reference point 9-12oz/pair of shoes</p> -->
+    <!-- <p>through investigating the impact of one pair of shoes<br><br> carmenhull.com <br> @XYZDataLabs</p> -->
+    <!-- Toggle Bar -->
+    <div style="text-align:left; margin-left:50px; margin-top:20px;">
+        <label for="growthSlider">one pair of shoes</label>
+        <input type="range" id="growthSlider" min="1" max="550" value="2" style="width: 300px; margin: 0 10px;">
+        <label for="growthSlider">550 million pairs of shoes</label>
     </div>
+
+
     <main></main>
     <!-- Use p5.js (friendly errors) OR q5.js (faster) -->
 
@@ -37,16 +42,14 @@
     -->
 
     <!-- YOUR SKETCH -->
-    <script src="sketch.js"></script>
-    <!-- <p>investigating the impact of one pair of shoes</p> -->
-
+    <script src="sketch1c.js"></script>
 
     <div class="aligned-container">
         <p>Data from Cheah et al., 2012 <br> carmenhull.com | @XYZDataLabs</p>
 
         <!-- Next Button -->
         <div style="text-align:center; margin-top:0px;">
-            <button onclick="location.href='page2.html'" style="padding: 10px 20px; font-size: 16px;">next</button>
+            <button onclick="location.href='page4.html'" style="padding: 10px 20px; font-size: 16px;">next</button>
         </div>
     </div>
 </body>
